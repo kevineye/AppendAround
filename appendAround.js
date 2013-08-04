@@ -49,4 +49,10 @@ how-to:
 
         });
     };
+
+    $(document).ready(function() {
+        // auto-init any direct descendants of elements with data-set property
+        // except any with data-fixed
+        $('[data-set] > :not([data-fixed])').appendAround();
+    })
 }( jQuery ));

@@ -5,7 +5,7 @@
 - Original [c]2012, @scottjehl, Filament Group, Inc. MIT/GPL
 - Modified to
   - preserve original element position/ordering whenever original containers are available
-  - TODO: auto-initialize any elements contained in data-set containers, except any with data-fixed
+  - auto-initialize any elements contained in data-set containers, except any with data-fixed
   - TODO: order repositioned elements according to data-order property on element or original container
 
 ## How-to
