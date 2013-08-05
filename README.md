@@ -6,7 +6,7 @@
 - Modified to
   - preserve original element position/ordering whenever original containers are available
   - auto-initialize any elements contained in data-set containers, except any with data-fixed
-  - TODO: order repositioned elements according to data-weight property on element or original container
+  - order repositioned elements according to data-weight property on element or original container
 
 ## How-to
 	1. Insert potential element containers throughout the DOM

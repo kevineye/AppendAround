@@ -75,7 +75,7 @@
     narrow -&gt;<span data-set="t4" class="hide-in-wide"></span>&lt-
 </div>
 <script>
-    test( "Ordering: data-order on element", function() {
+    test( "Ordering: data-weight on element", function() {
         expect(3);
         forceWide();
         equal( cleanText($('#t4')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
@@ -95,7 +95,7 @@
     narrow -&gt;<span data-set="t5" class="hide-in-wide"></span>&lt-
 </div>
 <script>
-    test( "Ordering: data-order on container", function() {
+    test( "Ordering: data-weight on container", function() {
         expect(3);
         forceWide();
         equal( cleanText($('#t5')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
