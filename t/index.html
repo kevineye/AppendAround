@@ -67,5 +67,45 @@
     });
 </script>
 
+<h1>Ordering: data-weight on element</h1>
+<div id="t4">
+    wide 1 -&gt;<span data-set="t4" class="hide-in-narrow"><span data-weight="2">2</span></span>&lt-<br>
+    wide 2 -&gt;<span data-set="t4" class="hide-in-narrow"><span data-weight="1">1</span></span>&lt-<br>
+    wide 3 -&gt;<span data-set="t4" class="hide-in-narrow"><span data-weight="3">3</span></span>&lt-<br>
+    narrow -&gt;<span data-set="t4" class="hide-in-wide"></span>&lt-
+</div>
+<script>
+    test( "Ordering: data-order on element", function() {
+        expect(3);
+        forceWide();
+        equal( cleanText($('#t4')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
+        forceNarrow();
+        equal( cleanText($('#t4')), "wide 1 -><- wide 2 -><- wide 3 -><- narrow ->123<-" );
+        forceWide();
+        equal( cleanText($('#t4')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
+        resetWidth();
+    });
+</script>
+
+<h1>Ordering: data-weight on container</h1>
+<div id="t5">
+    wide 1 -&gt;<span data-set="t5" data-weight="2" class="hide-in-narrow"><span>2</span></span>&lt-<br>
+    wide 2 -&gt;<span data-set="t5" data-weight="1" class="hide-in-narrow"><span>1</span></span>&lt-<br>
+    wide 3 -&gt;<span data-set="t5" data-weight="3" class="hide-in-narrow"><span>3</span></span>&lt-<br>
+    narrow -&gt;<span data-set="t5" class="hide-in-wide"></span>&lt-
+</div>
+<script>
+    test( "Ordering: data-order on container", function() {
+        expect(3);
+        forceWide();
+        equal( cleanText($('#t5')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
+        forceNarrow();
+        equal( cleanText($('#t5')), "wide 1 -><- wide 2 -><- wide 3 -><- narrow ->123<-" );
+        forceWide();
+        equal( cleanText($('#t5')), "wide 1 ->2<- wide 2 ->1<- wide 3 ->3<- narrow -><-" );
+        resetWidth();
+    });
+</script>
+
 </body>
 </html>

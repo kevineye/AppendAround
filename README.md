@@ -6,7 +6,7 @@
 - Modified to
   - preserve original element position/ordering whenever original containers are available
   - auto-initialize any elements contained in data-set containers, except any with data-fixed
-  - TODO: order repositioned elements according to data-order property on element or original container
+  - TODO: order repositioned elements according to data-weight property on element or original container
 
 ## How-to
 	1. Insert potential element containers throughout the DOM
@@ -15,7 +15,7 @@
 	4. Configure your CSS to only display one potential container at a time (and display others depending on @media conditions in your CSS)
 	5. Any element in a data-set containers will keep itself in a visible container at all times
 	6. Add data-fixed="true" to any elements in data-set containers that should not reposition themselves
-	7. Add data-order="..." to specify relative ordering among repositioned elements within a container
+	7. Add data-weight="..." to specify relative ordering among repositioned elements within a container
 
 
 ## Sample markup
