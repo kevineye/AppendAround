@@ -1,0 +1,33 @@
+body {
+    margin: 20px;
+}
+
+h1, div {
+    font: normal 12px/1.2 "Source Code Pro", monospace;
+    margin:0;
+    padding:0;
+}
+
+h1 {
+    font-weight: bold;
+    margin-top: 1.5em;
+}
+
+/* actual media queries so user can test interactively */
+@media only screen and (min-width: 501px) {
+    .hide-in-wide { display: none }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .hide-in-narrow { display: none }
+}
+
+/* fake resizing during qunit tests; much easier than actual resizing */
+body.force-wide .hide-in-wide { display: none }
+body.force-wide .hide-in-narrow { display: block }
+body.force-wide span.hide-in-narrow { display: inline}
+
+body.force-narrow .hide-in-narrow { display: none }
+body.force-narrow .hide-in-wide { display: block }
+body.force-narrow span.hide-in-wide { display: inline }

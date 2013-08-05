@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <link href="t.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.js"></script>
+    <script src="../appendAround.js"></script>
+    <script src="t.js"></script>
+</head>
+<body>
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<h1>Basics and auto-init</h1>
+<div id="t1">
+    wide&nbsp;&nbsp; -&gt;<span data-set="t1" class="hide-in-narrow"><span>A</span></span>&lt-<br>
+    narrow -&gt;<span data-set="t1" class="hide-in-wide"></span>&lt-
+</div>
+<script>
+    test( "Basics and auto-init", function() {
+        expect(2);
+        forceWide();
+        equal( cleanText($('#t1')), "wide ->A<- narrow -><-" );
+        forceNarrow();
+        equal( cleanText($('#t1')), "wide -><- narrow ->A<-" );
+        resetWidth();
+    });
+</script>
+
+<h1>Data-fixed</h1>
+<div id="t2">
+    wide&nbsp;&nbsp; -&gt;<span data-set="t2" class="hide-in-narrow"><span>A</span> <span data-fixed>B</span> <span data-fixed="true">C</span></span>&lt-<br>
+    narrow -&gt;<span data-set="t2" class="hide-in-wide"></span>&lt-
+</div>
+<script>
+    test( "Data-fixed", function() {
+        expect(2);
+        forceWide();
+        equal( cleanText($('#t2')), "wide ->A B C<- narrow -><-" );
+        forceNarrow();
+        equal( cleanText($('#t2')), "wide -><- narrow ->A<-" );
+        resetWidth();
+    });
+</script>
+
+<h1>Return to original position</h1>
+<div id="t3">
+    wide 1 -&gt;<span data-set="t3" class="hide-in-narrow"><span>A</span></span>&lt-<br>
+    wide 2 -&gt;<span data-set="t3" class="hide-in-narrow"><span>B</span></span>&lt-<br>
+    narrow -&gt;<span data-set="t3" class="hide-in-wide"></span>&lt-
+</div>
+<script>
+    test( "Return to original position", function() {
+        expect(3);
+        forceWide();
+        equal( cleanText($('#t3')), "wide 1 ->A<- wide 2 ->B<- narrow -><-" );
+        forceNarrow();
+        equal( cleanText($('#t3')), "wide 1 -><- wide 2 -><- narrow ->AB<-" );
+        forceWide();
+        equal( cleanText($('#t3')), "wide 1 ->A<- wide 2 ->B<- narrow -><-" );
+        resetWidth();
+    });
+</script>
+
+</body>
+</html>
